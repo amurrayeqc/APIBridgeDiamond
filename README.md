@@ -26,7 +26,7 @@ APIBridgeDiamond is built to be simple and practical, focusing on doing one thin
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/harutosati/APIBridgeDiamond.git`
+1. Clone the repository: `git clone https://github.com/centxyz/APIBridgeDiamond.git`
 2. Install dependencies: `pip install -r requirements.txt`
 3. Run the test suite: `pytest`
 
@@ -43,4 +43,4 @@ Pull requests and issue reports are both welcome. Please read the existing code 
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/harutosati/APIBridgeDiamond/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/centxyz/APIBridgeDiamond/blob/main/LICENSE) file for details.
