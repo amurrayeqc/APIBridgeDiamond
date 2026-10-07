@@ -1,8 +1,8 @@
-# APIBridgeDiamond
+# APIRelayForge
 
-[![CI](https://github.com/centxyz/APIBridgeDiamond/actions/workflows/ci.yml/badge.svg)](https://github.com/centxyz/APIBridgeDiamond/actions/workflows/ci.yml)
+[![CI](https://github.com/centxyz/APIRelayForge/actions/workflows/ci.yml/badge.svg)](https://github.com/centxyz/APIRelayForge/actions/workflows/ci.yml)
 
-APIBridgeDiamond is a durable webhook and event bridge. Applications publish JSON events to named routes; the bridge queues them, signs outbound requests, retries failures, records delivery history, and prevents duplicate submissions with idempotency keys.
+APIRelayForge is a durable webhook and event bridge. Applications publish JSON events to named routes; the bridge queues them, signs outbound requests, retries failures, records delivery history, and prevents duplicate submissions with idempotency keys.
 
 ## Features
 
@@ -18,8 +18,8 @@ APIBridgeDiamond is a durable webhook and event bridge. Applications publish JSO
 ## Install
 
 ```bash
-git clone https://github.com/centxyz/APIBridgeDiamond.git
-cd APIBridgeDiamond
+git clone https://github.com/centxyz/APIRelayForge.git
+cd APIRelayForge
 npm install
 npm test
 npm start
