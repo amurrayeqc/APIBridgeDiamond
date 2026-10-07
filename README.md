@@ -1,46 +1,30 @@
-<!-- fallback_APIBridgeDiamond_20260901132452_69647 -->
-
 # APIBridgeDiamond
 
-APIBridgeDiamond enables efficient, asynchronous data exchange via message-queue-based, event-driven architecture and robust engine manager.
+APIBridgeDiamond is a small Express HTTP starter service. It provides a health check, returns an in-memory empty data collection, and transforms posted JSON by adding processing metadata. It does not implement a blockchain, message queue, distributed network, or persistent database.
 
-APIBridgeDiamond is built to be simple and practical, focusing on doing one thing well.
+## Install and run
 
-**Why APIBridgeDiamond?**
+```bash
+git clone https://github.com/centxyz/APIBridgeDiamond.git
+cd APIBridgeDiamond
+npm install
+npm start
+```
 
-- APIBridgeDiamond enables efficient, asynchronous data
-- exchange via message-queue-based, event-driven architecture
-- and robust engine manager
+The default port is `3000`; set `PORT` to override it.
 
-## Key Features
+## Endpoints
 
-- APIBridgeDiamond enables efficient, asynchronous data
-- exchange via message-queue-based, event-driven architecture
-- and robust engine manager
+- `GET /health` — service health
+- `GET /api/data` — current in-memory data response
+- `POST /api/process` — echoes and marks a JSON object as processed
 
-## Technology Stack
+## Test
 
-- python
-- Modular architecture
-- CI-ready (GitHub Actions)
-
-## Installation
-
-1. Clone the repository: `git clone https://github.com/centxyz/APIBridgeDiamond.git`
-2. Install dependencies: `pip install -r requirements.txt`
-3. Run the test suite: `pytest`
-
-## Configuration
-
-APIBridgeDiamond is configured through environment variables (see `.env.example`). Key options:
-- **APP_ENV**: `development` or `production`.
-- **PORT**: Port the server listens on.
-- **LOG_LEVEL**: `debug`, `info`, or `error`.
-
-## Contributing
-
-Pull requests and issue reports are both welcome. Please read the existing code style before submitting.
+```bash
+npm test
+```
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/centxyz/APIBridgeDiamond/blob/main/LICENSE) file for details.
+MIT
