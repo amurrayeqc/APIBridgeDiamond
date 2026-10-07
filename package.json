@@ -1,18 +1,20 @@
 {
   "name": "apibridgediamond",
-  "version": "1.0.0",
-  "description": "APIBridgeDiamond HTTP starter service with health, data, and JSON transformation endpoints",
+  "version": "2.0.0",
+  "description": "Durable webhook and event bridge with signatures, retries, and idempotency",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "dev": "node --watch src/server.js",
+    "test": "node --test tests/*.test.js",
+    "test:watch": "node --test --watch tests/*.test.js"
   },
   "keywords": [
     "nodejs",
     "express",
     "api",
+    "webhook",
+    "event-bridge",
     "apibridgediamond"
   ],
   "author": "cent",
@@ -23,8 +25,6 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "jest": "^29.7.0",
-    "nodemon": "^3.0.1",
-    "supertest": "^6.3.3"
+    "supertest": "^7.1.3"
   }
 }

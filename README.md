@@ -1,23 +1,59 @@
 # APIBridgeDiamond
 
-APIBridgeDiamond is a small Express HTTP starter service. It provides a health check, returns an in-memory empty data collection, and transforms posted JSON by adding processing metadata. It does not implement a blockchain, message queue, distributed network, or persistent database.
+APIBridgeDiamond is a durable webhook and event bridge. Applications publish JSON events to named routes; the bridge queues them, signs outbound requests, retries failures, records delivery history, and prevents duplicate submissions with idempotency keys.
 
-## Install and run
+## Features
+
+- Persistent named webhook routes
+- Durable queued event deliveries
+- HMAC-SHA256 request signatures
+- Idempotent publishing with `Idempotency-Key`
+- Configurable bounded retries and request timeouts
+- Recovery of interrupted deliveries after restart
+- Delivery history and queue health metrics
+- Atomic on-disk state updates
+
+## Install
 
 ```bash
 git clone https://github.com/centxyz/APIBridgeDiamond.git
 cd APIBridgeDiamond
 npm install
+npm test
 npm start
 ```
 
-The default port is `3000`; set `PORT` to override it.
+The service listens on port `3000` by default and stores state at `.apibridge/state.json`.
 
-## Endpoints
+## Example
 
-- `GET /health` — service health
-- `GET /api/data` — current in-memory data response
-- `POST /api/process` — echoes and marks a JSON object as processed
+```bash
+curl -X POST http://localhost:3000/v1/routes \
+  -H 'Content-Type: application/json' \
+  -d '{"name":"orders","targetUrl":"https://example.com/webhooks/orders","secret":"shared-secret"}'
+
+curl -X POST http://localhost:3000/v1/routes/orders/events \
+  -H 'Content-Type: application/json' \
+  -H 'Idempotency-Key: order-42' \
+  -d '{"orderId":42,"status":"paid"}'
+```
+
+Signed routes receive `X-API-Bridge-Signature-256: sha256=...`, calculated over the exact outbound JSON body. Every delivery also includes `X-API-Bridge-Delivery`.
+
+## API
+
+- `GET /health`
+- `GET /v1/routes`
+- `POST /v1/routes`
+- `DELETE /v1/routes/:name`
+- `POST /v1/routes/:name/events`
+- `GET /v1/deliveries`
+- `GET /v1/deliveries/:id`
+
+## Configuration
+
+- `PORT` — listening port, default `3000`
+- `DATA_FILE` — state file, default `.apibridge/state.json`
 
 ## Test
 
@@ -25,6 +61,8 @@ The default port is `3000`; set `PORT` to override it.
 npm test
 ```
 
+The suite verifies route validation, secret redaction, signatures, delivery, retries, idempotency, persistence, and health metrics.
+
 ## License
 
-MIT
+MIT © cent
