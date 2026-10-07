@@ -1,5 +1,7 @@
 # APIBridgeDiamond
 
+[![CI](https://github.com/centxyz/APIBridgeDiamond/actions/workflows/ci.yml/badge.svg)](https://github.com/centxyz/APIBridgeDiamond/actions/workflows/ci.yml)
+
 APIBridgeDiamond is a durable webhook and event bridge. Applications publish JSON events to named routes; the bridge queues them, signs outbound requests, retries failures, records delivery history, and prevents duplicate submissions with idempotency keys.
 
 ## Features
