@@ -68,3 +68,9 @@ The suite verifies route validation, secret redaction, signatures, delivery, ret
 ## License
 
 MIT © cent
+
+## Current limitations
+
+- Delivery acknowledgement confirms the destination HTTP response, not the destination application's internal side effects.
+- The file-backed queue is designed for a single service instance, not a distributed cluster.
+- Operators must secure route configuration, signing secrets, storage, and network access.
